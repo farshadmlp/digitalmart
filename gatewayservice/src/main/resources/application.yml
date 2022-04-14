@@ -1,0 +1,49 @@
+#spring:
+#  application:
+#    name: spring-cloud-eureka-client
+#server:
+#  port: 5001
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:5000/eureka/
+#  instance:
+#    preferIpAddress: true
+server:
+  port: 5001
+spring:
+  application:
+    name: api-gateways
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:5000/eureka/
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: movie-service
+#          uri: http://localhost:9090/
+#          predicates:
+#            - Path=/apis/movies/**
+#        - id: rating-service
+#          uri: http://localhost:9091/
+#          predicates:
+#            - Path=/apis/ratings/**
+#        - id: booking-service
+#          uri: http://localhost:9092/
+#          predicates:
+#            - Path=/apis/customer-ratings/**,/apis/customer-movies/**
+
+management:
+  endpoints:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  file:
+    max-size: 10MB
+    max-history: 5
+    name: api-gateway-service-log.log
